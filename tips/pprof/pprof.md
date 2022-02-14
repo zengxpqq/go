@@ -2,6 +2,8 @@
 
 原文地址： https://mp.weixin.qq.com/s/Ceu4zZ5tY2fNWizffoy0Ow
 
+https://mp.weixin.qq.com/s/DPQyEZzeDOoe4umbwdCwSQ
+
 如果你的应用是一直运行的，比如 web 应用或者gRPC服务等，那么可以使用 net/http/pprof 库，它能够在应用提供 HTTP 服务时进行分析。
 
 如果使用了默认的 http.DefaultServeMux（通常是代码直接使用 http.ListenAndServe("0.0.0.0:8000", nil)），只需要在代码中添加一行，匿名引用net/http/pprof：
