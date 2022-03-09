@@ -1,0 +1,47 @@
+# https://docs.gitea.io/zh-cn/install-with-docker/
+version: "3"
+
+networks:
+  dronenet:
+    external: false
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - DB_TYPE=postgres
+      - DB_HOST=gitea_postgres:5432
+      - DB_NAME=gitea
+      - DB_USER=gitea
+      - DB_PASSWD=gitea
+    restart: always
+    volumes:
+      - ./gitea:/data
+      - ./timezone:/etc/timezone:ro
+      - ./localtime:/etc/localtime:ro
+      - /home/git/.ssh/:/data/git/.ssh
+    ports:
+      - "3000:3000"
+      - "222:22"
+    depends_on:
+      - gitea_postgres
+    networks:
+      - dronenet
+    privileged: true
+
+  gitea_postgres:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    container_name: gitea_postgres
+    volumes:
+      - ./gitea_postgres:/data/postgres/data
+    environment:
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_DB=gitea
+    networks:
+      - dronenet
