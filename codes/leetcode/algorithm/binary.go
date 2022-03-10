@@ -89,3 +89,23 @@ func firstBadVersion(n int) int {
 		}
 	}
 }
+
+// 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+// 在一个有序数组中找第一个大于等于 target 的下标
+func findInsert(nums []int, target int) int {
+	left := 0
+	right := len(nums) - 1
+
+	index := len(nums)
+	for left <= right {
+		midIndex := left + (right-left)/2
+		if target <= nums[midIndex] {
+			index = midIndex
+			right = midIndex - 1
+		} else {
+			left = midIndex + 1
+		}
+	}
+
+	return index
+}

@@ -16,23 +16,10 @@ func TestBinarySearch(t *testing.T) {
 }
 
 func TestBinaryInsert(t *testing.T) {
-	data := []int{1}
-	target := 10
-	left := 0
-	right := len(data) - 1
+	var index int
+	index = findInsert([]int{1, 3, 5, 6}, 7)
+	fmt.Println("index: ", index)
 
-	for left <= right {
-		midIndex := (left + right) / 2
-		midValue := data[midIndex]
-		if midValue == target {
-
-			return
-		} else if midValue > target {
-			right = midIndex - 1
-		} else {
-			left = midIndex + 1
-		}
-	}
-
-	fmt.Println(left, right)
+	//index = findInsert([]int{1, 2, 4}, 3)
+	//fmt.Println("index: ", index)
 }
