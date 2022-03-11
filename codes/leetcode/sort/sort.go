@@ -95,5 +95,4 @@ func rotate1(nums []int, k int) {
 	reverse(nums)
 	reverse(nums[0:k])
 	reverse(nums[k:])
-
 }
