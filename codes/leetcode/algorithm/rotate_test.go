@@ -1,15 +1,9 @@
-package sort
+package algorithm
 
 import (
 	"fmt"
 	"testing"
 )
-
-func TestSort(t *testing.T) {
-	data := []int{-1}
-	result := sortedSquares(data)
-	fmt.Println(result)
-}
 
 func TestRotate(t *testing.T) {
 	rotate([]int{1, 2, 3, 4, 5, 6, 7}, 1)
